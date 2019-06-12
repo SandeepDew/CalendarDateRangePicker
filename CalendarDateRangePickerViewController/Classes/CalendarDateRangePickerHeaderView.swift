@@ -29,7 +29,7 @@ class CalendarDateRangePickerHeaderView: UICollectionReusableView {
     
     @objc func initLabel() {
         label = UILabel(frame: frame)
-        label.center = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+        label.frame = CGRect.init(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
         label.font = font
         label.textColor = UIColor.darkGray
         label.textAlignment = NSTextAlignment.center
