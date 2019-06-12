@@ -45,7 +45,7 @@ class CalendarDateRangePickerCell: UICollectionViewCell {
         label = UILabel(frame: frame)
         label.center = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
         label.font = font
-        label.textColor = UIColor.darkGray
+        label.textColor = UIColor.red
         label.textAlignment = NSTextAlignment.center
         self.addSubview(label)
     }
