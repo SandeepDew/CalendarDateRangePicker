@@ -165,6 +165,15 @@ extension CalendarDateRangePickerViewController {
         case UICollectionView.elementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerReuseIdentifier, for: indexPath) as! CalendarDateRangePickerHeaderView
             headerView.label.text = getMonthLabel(date: getFirstDateForSection(section: indexPath.section))
+            
+            let padding = collectionViewInsets.left + collectionViewInsets.right
+            let availableWidth = view.frame.width - padding
+            let itemWidth = availableWidth / CGFloat(itemsPerRow)
+
+            var labelFrame = headerView.label.frame
+            labelFrame.origin.x = (itemWidth / 2 ) - (headerFont.pointSize / 2)
+            
+            headerView.label.frame = labelFrame
             headerView.font = headerFont
             return headerView
         default:
