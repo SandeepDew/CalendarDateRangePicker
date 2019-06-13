@@ -136,7 +136,11 @@ extension CalendarDateRangePickerViewController {
             if isBefore(dateA: date, dateB: minimumDate) {
                 cell.disable()
             }
-            
+
+            if isAfter(dateA: date, dateB: maximumDate) {
+                cell.disable()
+            }
+
             if selectedStartDate != nil && selectedEndDate != nil && isBefore(dateA: selectedStartDate!, dateB: date) && isBefore(dateA: date, dateB: selectedEndDate!) {
                 // Cell falls within selected range
                 if dayOfMonth == 1 {
@@ -191,7 +195,7 @@ extension CalendarDateRangePickerViewController : UICollectionViewDelegateFlowLa
         if cell.date == nil {
             return
         }
-        if isBefore(dateA: cell.date!, dateB: minimumDate){
+        if isBefore(dateA: cell.date!, dateB: minimumDate) || isAfter(dateA:cell.date! , dateB: maximumDate) {
             return
         }
         
@@ -302,7 +306,11 @@ extension CalendarDateRangePickerViewController {
     @objc func isBefore(dateA: Date, dateB: Date) -> Bool {
         return Calendar.current.compare(dateA, to: dateB, toGranularity: .day) == ComparisonResult.orderedAscending
     }
-    
+
+    @objc func isAfter(dateA: Date, dateB: Date) -> Bool {
+        return Calendar.current.compare(dateA, to: dateB, toGranularity: .day) == C!omparisonResult.orderedAscending
+    }
+
     @objc func isBetween(_ startDateCellIndex: IndexPath, and endDateCellIndex: IndexPath) -> Bool {
         
         if disabledDates == nil{
