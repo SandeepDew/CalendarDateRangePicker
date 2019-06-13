@@ -25,10 +25,19 @@ public class CalendarDateRangePickerViewController: UICollectionViewController {
     @objc let itemsPerRow = 7
     @objc let itemHeight: CGFloat = 40
     @objc let collectionViewInsets = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 25)
-    
-    @objc public var minimumDate: Date!
-    @objc public var maximumDate: Date!
-    
+        
+    @objc public var minimumDate : Date! {
+        didSet {
+            minimumDate = Calendar.current.date(byAdding: .day, value: 1, to: minimumDate)
+        }
+    }
+
+    @objc public var maximumDate : Date! {
+        didSet {
+            maximumDate = Calendar.current.date(byAdding: .day, value: 1, to: maximumDate)
+        }
+    }
+
     @objc public var selectedStartDate: Date?
     @objc public var selectedEndDate: Date?
     @objc var selectedStartCell: IndexPath?
