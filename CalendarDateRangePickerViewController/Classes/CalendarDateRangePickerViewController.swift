@@ -308,7 +308,7 @@ extension CalendarDateRangePickerViewController {
     }
 
     @objc func isAfter(dateA: Date, dateB: Date) -> Bool {
-        return Calendar.current.compare(dateA, to: dateB, toGranularity: .day) == C!omparisonResult.orderedAscending
+        return Calendar.current.compare(dateA, to: dateB, toGranularity: .day) == ComparisonResult.orderedAscending
     }
 
     @objc func isBetween(_ startDateCellIndex: IndexPath, and endDateCellIndex: IndexPath) -> Bool {
